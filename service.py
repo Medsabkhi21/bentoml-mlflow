@@ -8,7 +8,7 @@ import pydantic
 from bentoml.io import JSON, PandasSeries, PandasDataFrame
 
 
-class preprocessor(bentoml.Runnable):
+class PreProcessor(bentoml.Runnable):
     SUPPORTED_RESOURCES = ()
     SUPPORTS_CPU_MULTI_THREADING = True
 
@@ -20,7 +20,7 @@ class preprocessor(bentoml.Runnable):
         return df.dropna()
 
 
-preprocessor_runner = bentoml.Runner(preprocessor)
+preprocessor_runner = bentoml.Runner(PreProcessor)
 runner = bentoml.mlflow.get('sklearn_house_data').to_runner()
 svc = bentoml.Service('sklearn_house_data', runners=[
                       preprocessor_runner, runner])

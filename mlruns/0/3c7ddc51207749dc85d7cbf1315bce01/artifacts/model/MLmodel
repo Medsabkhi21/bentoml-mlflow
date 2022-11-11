@@ -1,0 +1,28 @@
+artifact_path: model
+flavors:
+  python_function:
+    env: conda.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.8.5
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.1.2
+mlflow_version: 1.29.0
+model_uuid: a247feda93314cf8b1d71f49b058b76b
+run_id: 3c7ddc51207749dc85d7cbf1315bce01
+signature:
+  inputs: '[{"name": "bedrooms", "type": "double"}, {"name": "bathrooms", "type":
+    "double"}, {"name": "sqft_living", "type": "double"}, {"name": "sqft_lot", "type":
+    "double"}, {"name": "floors", "type": "double"}, {"name": "waterfront", "type":
+    "double"}, {"name": "view", "type": "double"}, {"name": "condition", "type": "double"},
+    {"name": "grade", "type": "double"}, {"name": "sqft_above", "type": "double"},
+    {"name": "sqft_basement", "type": "double"}, {"name": "yr_built", "type": "double"},
+    {"name": "yr_renovated", "type": "double"}, {"name": "zipcode", "type": "double"},
+    {"name": "lat", "type": "double"}, {"name": "long", "type": "double"}, {"name":
+    "sqft_living15", "type": "double"}, {"name": "sqft_lot15", "type": "double"}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "float64", "shape": [-1]}}]'
+utc_time_created: '2022-11-10 19:50:33.050730'

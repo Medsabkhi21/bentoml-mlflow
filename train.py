@@ -9,7 +9,7 @@ from typing import List
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.model_selection import GridSearchCV
 from sklearn.model_selection import RepeatedStratifiedKFold
-
+import consts
 
 def main():
     mlflow.sklearn.autolog()
@@ -37,10 +37,14 @@ def main():
         
         X_train = pd.read_csv('data/train/X_train.csv', dtype=input_dtypes)
         y_train = pd.read_csv('data/train/y_train.csv').values.ravel()
+
+        mlflow.set_tracking_uri(consts.MLFLOW_TRACKING_URI)
+        os.environ['MLFLOW_TRACKING_USERNAME'] = consts.MLFLOW_TRACKING_USERNAME
+        os.environ['MLFLOW_TRACKING_PASSWORD'] = consts.MLFLOW_TRACKING_PASSWORD
+
     except IOError:
-        print('''Make sure that you have: 
-                1. Downloaded the data from Kaggle into the data folder.
-                2. Ran the download_data.py file''')
+        print('''unavailable data..
+                ''')
         return
     model = RandomForestRegressor(random_state=42)
     # define evaluation

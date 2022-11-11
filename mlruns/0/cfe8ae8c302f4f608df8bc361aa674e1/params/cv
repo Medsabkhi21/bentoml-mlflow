@@ -1,0 +1,1 @@
+RepeatedStratifiedKFold(n_repeats=3, n_splits=10, random_state=1)

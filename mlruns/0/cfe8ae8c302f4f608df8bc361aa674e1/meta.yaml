@@ -1,0 +1,15 @@
+artifact_uri: ./mlruns/0/cfe8ae8c302f4f608df8bc361aa674e1/artifacts
+end_time: 1668109594247
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: cfe8ae8c302f4f608df8bc361aa674e1
+run_uuid: cfe8ae8c302f4f608df8bc361aa674e1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1668109541509
+status: 4
+tags: []
+user_id: medsabkhi
