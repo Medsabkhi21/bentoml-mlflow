@@ -4,7 +4,7 @@ import json
 import numpy as np
 import bentoml
 import pandas as pd
-import pydantic
+from pydantic import BaseModel
 from bentoml.io import JSON, PandasSeries, PandasDataFrame
 
 
@@ -26,7 +26,7 @@ svc = bentoml.Service('sklearn_house_data', runners=[
                       preprocessor_runner, runner])
 
 
-class File(pydantic.BaseModel):
+class File(BaseModel):
     path: str
 
 
@@ -35,11 +35,7 @@ file_input = JSON(
     validate_json=True)
 
 
-@svc.api(
-    input=file_input,
-    output=JSON(),
-    route='v1/file/'
-)
+@svc.api(input=file_input,output=JSON(),route='v1/file/')
 def predictions(file_input: File) -> json:
     file_input = file_input.path
     houses = pd.read_csv(file_input)
@@ -48,11 +44,7 @@ def predictions(file_input: File) -> json:
     return {'prices': prices}
 
 
-@svc.api(
-    input=PandasDataFrame(),
-    output=JSON(),
-    route='v1/predict/'
-)
+@svc.api(input=PandasDataFrame(),output=JSON(),route='v1/predict/')
 def predict(house_df: pd.DataFrame) -> json:
     house_df.columns = ['bedrooms', 'bathrooms', 'sqft_living', 'sqft_lot', 'floors', 'waterfront', 'view', 'condition', 'grade',
                         'sqft_above', 'sqft_basement', 'yr_built', 'yr_renovated', 'zipcode', 'lat', 'long', 'sqft_living15', 'sqft_lot15']
