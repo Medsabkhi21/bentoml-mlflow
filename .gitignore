@@ -1,3 +1,4 @@
 data/kc_house_data.csv
 __pycache__/
 consts.py
+/data
